@@ -1,0 +1,140 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { meta } from "../consts";
+---
+
+<Layout title="Contact" description="Get in touch with me">
+  <section class="mx-auto max-w-4xl">
+    <div class="mb-8">
+      <p class="mb-2 text-sm uppercase tracking-wider text-accent">Let's talk</p>
+      <h1 class="mb-6 text-5xl font-bold lg:text-6xl">Contact</h1>
+      <p class="mb-4 text-lg text-muted">
+        Have a question or a project in mind? Feel free to reach out.
+      </p>
+      <p class="text-base text-muted">
+        <span class="font-medium">Location:</span> VietNam, Ho Chi Minh City
+      </p>
+    </div>
+
+    <!-- Custom form with Supabase -->
+    <form 
+      id="contactForm"
+      class="mt-12 space-y-6"
+    >
+      <div>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Name"
+          required
+          class="input input-bordered w-full bg-base-200/50 backdrop-blur-sm transition-all focus:bg-base-200"
+        />
+      </div>
+
+      <div>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Email"
+          required
+          class="input input-bordered w-full bg-base-200/50 backdrop-blur-sm transition-all focus:bg-base-200"
+        />
+      </div>
+
+      <div>
+        <textarea
+          name="message"
+          id="message"
+          placeholder="Message"
+          rows="8"
+          required
+          class="textarea textarea-bordered w-full bg-base-200/50 backdrop-blur-sm transition-all focus:bg-base-200"
+        ></textarea>
+      </div>
+
+      <div id="formMessage" class="hidden rounded-lg p-4"></div>
+
+      <!-- Success Modal -->
+      <div id="successModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div class="mx-4 max-w-md rounded-2xl border border-white/20 bg-white/10 p-8 shadow-2xl backdrop-blur-xl">
+          <div class="mb-4 flex justify-center">
+            <svg class="h-16 w-16 text-success" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+          <h3 class="mb-2 text-center text-2xl font-bold">Thank You!</h3>
+          <p class="text-center text-muted">Your message has been sent successfully.</p>
+          <p class="mt-4 text-center text-sm text-muted">Click anywhere to continue</p>
+        </div>
+      </div>
+
+      <div>
+        <button
+          type="submit"
+          id="submitBtn"
+          class="btn btn-accent light-mode-subtle w-full transition-all hover:scale-[1.02] sm:w-auto sm:px-16"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </section>
+
+  <script>
+    const form = document.getElementById('contactForm') as HTMLFormElement;
+    const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
+    const formMessage = document.getElementById('formMessage') as HTMLDivElement;
+    const successModal = document.getElementById('successModal') as HTMLDivElement;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Disable submit button
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+      formMessage.classList.add('hidden');
+
+      // Get form data
+      const name = (document.getElementById('name') as HTMLInputElement).value;
+      const email = (document.getElementById('email') as HTMLInputElement).value;
+      const message = (document.getElementById('message') as HTMLTextAreaElement).value;
+
+      try {
+        // Initialize Supabase client
+        const { createClient } = await import('@supabase/supabase-js');
+        const supabase = createClient(
+          import.meta.env.PUBLIC_SUPABASE_URL,
+          import.meta.env.PUBLIC_SUPABASE_ANON_KEY
+        );
+
+        // Insert directly from frontend
+        const { error } = await supabase
+          .from('contact_messages')
+          .insert([{ name, email, message }]);
+
+        if (error) throw error;
+
+        // Show success modal
+        successModal.classList.remove('hidden');
+        successModal.classList.add('flex');
+        
+        // Reload on any click
+        successModal.addEventListener('click', () => {
+          window.location.reload();
+        });
+      } catch (error) {
+        // Error
+        console.error('Form submission error:', error);
+        formMessage.className = 'rounded-lg bg-error/20 p-4 text-error';
+        formMessage.textContent = error instanceof Error ? error.message : 'Sorry, something went wrong. Please try again later.';
+        formMessage.classList.remove('hidden');
+        
+        // Re-enable submit button on error
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit';
+      }
+    });
+  </script>
+</Layout>

@@ -1,0 +1,568 @@
+---
+import { SquareArrowOutUpRight } from "@lucide/astro";
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import { meta, about } from "../consts";
+// import LucideIcon from "../components/LucideIcon.astro";
+import Icon from "../components/Icon.astro";
+---
+
+<Layout title={meta.about.title} description={meta.about.description}>
+  <!-- Hero Section -->
+  <section class="grid gap-8 lg:grid-cols-[1fr_300px] lg:gap-12">
+    <div>
+      <h1 set:html={about.headLine} />
+      <p class="mt-2">{about.tagLine}</p>
+      <p set:html={about.description} class="text-muted mt-4" />
+      <div class="mt-8 mb-6 flex gap-3">
+        {
+          about.links.map((link) => (
+            <a
+              href={link.href}
+              target="_blank"
+              class="btn btn-soft btn-circle btn-accent light-mode-subtle"
+              title={link.icon}
+            >
+              {link.iconUrl ? (
+                <div
+                  class="social-icon"
+                  style={{
+                    width: "1.75rem",
+                    height: "1.75rem",
+                    maskImage: `url(${link.iconUrl})`,
+                    WebkitMaskImage: `url(${link.iconUrl})`,
+                    maskSize: "contain",
+                    WebkitMaskSize: "contain",
+                    maskRepeat: "no-repeat",
+                    WebkitMaskRepeat: "no-repeat",
+                    maskPosition: "center",
+                    WebkitMaskPosition: "center",
+                  }}
+                />
+              ) : (
+                <Icon name={link.icon} size="1.75rem" />
+              )}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Profile Picture - Desktop: Right side, Mobile: Above -->
+    <div
+      class="order-first lg:order-last lg:flex lg:items-start lg:justify-center"
+    >
+      <Image
+        src={about.profilePic}
+        alt="Profile Picture"
+        class="mx-auto w-40 lg:w-64"
+      />
+    </div>
+  </section>
+
+  <!-- Tech Stack Section -->
+  <section class="mt-12 lg:mt-16">
+    <h2 class="mb-8">
+      <span class="fancy-highlight">Tech Stack</span>
+    </h2>
+
+    <!-- Databases -->
+    <div>
+      <div
+        class="relative overflow-hidden"
+        style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);"
+      >
+        <div
+          class="flex gap-8"
+          style="animation: infiniteScroll 20s linear infinite; width: max-content;"
+        >
+          {
+            about.techStack.databases
+              .concat(about.techStack.databases)
+              .concat(about.techStack.databases)
+              .concat(about.techStack.databases)
+              .map((tech, index) => (
+                <div
+                  class="group flex flex-shrink-0 flex-col items-center"
+                  style="min-width: 140px; padding: 8px;"
+                >
+                  <div class="group-hover:border-accent/50 flex h-24 w-24 items-center justify-center rounded-xl border border-white/20 bg-white/10 shadow-lg backdrop-blur-xl transition-all group-hover:scale-110 group-hover:bg-white/20">
+                    <img src={tech.icon} alt={tech.name} class="h-14 w-14" />
+                  </div>
+                  <p class="mt-2 text-center text-sm font-medium opacity-0 transition-opacity group-hover:opacity-100">
+                    {tech.name}
+                  </p>
+                </div>
+              ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Languages -->
+    <div>
+      <div
+        class="relative overflow-hidden"
+        style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);"
+      >
+        <div
+          class="flex gap-8"
+          style="animation: infiniteScroll 25s linear infinite; width: max-content;"
+        >
+          {
+            about.techStack.languages
+              .concat(about.techStack.languages)
+              .concat(about.techStack.languages)
+              .concat(about.techStack.languages)
+              .map((tech, index) => (
+                <div
+                  class="group flex flex-shrink-0 flex-col items-center"
+                  style="min-width: 140px; padding: 8px;"
+                >
+                  <div class="group-hover:border-accent/50 flex h-24 w-24 items-center justify-center rounded-xl border border-white/20 bg-white/10 shadow-lg backdrop-blur-xl transition-all group-hover:scale-110 group-hover:bg-white/20">
+                    <img src={tech.icon} alt={tech.name} class="h-14 w-14" />
+                  </div>
+                  <p class="mt-2 text-center text-sm font-medium opacity-0 transition-opacity group-hover:opacity-100">
+                    {tech.name}
+                  </p>
+                </div>
+              ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Tools -->
+    <div>
+      <div
+        class="relative overflow-hidden"
+        style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);"
+      >
+        <div
+          class="flex gap-8"
+          style="animation: infiniteScroll 30s linear infinite; width: max-content;"
+        >
+          {
+            about.techStack.tools
+              .concat(about.techStack.tools)
+              .concat(about.techStack.tools)
+              .concat(about.techStack.tools)
+              .map((tech, index) => (
+                <div
+                  class="group flex flex-shrink-0 flex-col items-center"
+                  style="min-width: 140px; padding: 8px;"
+                >
+                  <div class="group-hover:border-accent/50 flex h-24 w-24 items-center justify-center rounded-xl border border-white/20 bg-white/10 shadow-lg backdrop-blur-xl transition-all group-hover:scale-110 group-hover:bg-white/20">
+                    <img
+                      src={tech.icon}
+                      alt={tech.name}
+                      class={`h-14 w-14 ${
+                        tech.name === "Apache Kafka" ? "kafka-icon" : ""
+                      }`}
+                    />
+                  </div>
+                  <p class="mt-2 text-center text-sm font-medium opacity-0 transition-opacity group-hover:opacity-100">
+                    {tech.name}
+                  </p>
+                </div>
+              ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    /* Social icon styling */
+    .social-icon {
+      background-color: currentColor;
+      /* Default to text color (black/dark in light mode) */
+      transition: background-color 0.3s ease;
+    }
+
+    :global([data-theme="dark"]) .social-icon {
+      background-color: var(--color-accent);
+      /* Use accent color in dark mode */
+    }
+
+    @keyframes infiniteScroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-25%);
+      }
+    }
+  </style>
+
+  <!-- Action Buttons -->
+  <div class="my-8 grid gap-3 lg:my-10 lg:grid-cols-2 lg:gap-12">
+    <a
+      class="btn btn-soft btn-accent light-mode-subtle w-full transition-all hover:scale-[1.02]"
+      href={about.resumeHref}
+      target="_blank"
+      >Open Resume
+      <SquareArrowOutUpRight size="1rem" />
+    </a>
+    <a
+      class="btn btn-soft btn-accent light-mode-subtle w-full transition-all hover:scale-[1.02]"
+      href="/projects">My Projects</a
+    >
+  </div>
+
+  <!-- Work Experience & Education in Two Columns on Desktop -->
+  <div class="grid gap-10 lg:grid-cols-2 lg:gap-12">
+    <section>
+      <h2 class="mb-4">
+        <span class="fancy-highlight">Work Experience</span>
+      </h2>
+      <div class="flex flex-col gap-8">
+        {
+          about.workExperience.map((exp) => (
+            <div class="border-accent/30 border-l-2 pl-4">
+              <h3 class="font-semibold">{exp.title}</h3>
+              <div class="primary-badge my-2">{exp.timeline}</div>
+              <p class="mb-3 text-sm font-medium">{exp.company}</p>
+              <p class="text-muted leading-relaxed">{exp.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section>
+      <h2 class="mb-4">
+        <span class="fancy-highlight">Education</span>
+      </h2>
+      <div class="flex flex-col gap-8">
+        {
+          about.education.map((edu) => (
+            <div class="border-accent/30 border-l-2 pl-4">
+              <h3 class="font-semibold">{edu.title}</h3>
+              <div class="primary-badge my-2">{edu.timeline}</div>
+              <p class="mb-3 text-sm font-medium">{edu.institution}</p>
+              <p class="text-muted leading-relaxed">{edu.description}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+
+  <!-- Contact Section -->
+  <section id="contact" class="mt-20 lg:mt-32">
+    <div class="grid gap-12 lg:grid-cols-2 lg:gap-16">
+      <!-- Left Column: Info & Socials -->
+      <div class="flex flex-col justify-center">
+        <span class="text-accent font-medium tracking-wider uppercase"
+          >Get in Touch</span
+        >
+        <h2 class="mt-4 text-4xl font-bold lg:text-5xl">
+          Let's Work <span class="fancy-highlight">Together</span>
+        </h2>
+        <p class="text-muted mt-6 text-lg leading-relaxed">
+          Have a project in mind or just want to chat? I'm always open to
+          discussing new ideas and opportunities. Feel free to reach out
+          directly or connect with me on social media.
+        </p>
+
+        <div class="mt-8">
+          <p class="text-muted mb-4 text-base">
+            <span class="text-base-content font-medium">Location:</span> Ho Chi Minh
+            City, Vietnam
+          </p>
+          <!-- <p class="text-base text-muted">
+            <span class="font-medium text-base-content">Email:</span> <a href="mailto:ban.ndtran@gmail.com"
+              class="hover:text-accent transition-colors">ban.ndtran@gmail.com</a>
+          </p> -->
+        </div>
+
+        <div class="mt-10 flex flex-wrap gap-3">
+          {
+            about.links.map((link) => (
+              <a
+                href={link.href}
+                target="_blank"
+                class="btn btn-soft btn-circle btn-accent light-mode-subtle"
+                title={link.icon}
+              >
+                {link.iconUrl ? (
+                  <div
+                    class="social-icon"
+                    style={{
+                      width: "1.5rem",
+                      height: "1.5rem",
+                      maskImage: `url(${link.iconUrl})`,
+                      WebkitMaskImage: `url(${link.iconUrl})`,
+                      maskSize: "contain",
+                      WebkitMaskSize: "contain",
+                      maskRepeat: "no-repeat",
+                      WebkitMaskRepeat: "no-repeat",
+                      maskPosition: "center",
+                      WebkitMaskPosition: "center",
+                    }}
+                  />
+                ) : (
+                  <Icon name={link.icon} size="1.5rem" />
+                )}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Right Column: Contact Form -->
+      <div class="relative">
+        <!-- Glass Card -->
+        <div
+          class="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-xl backdrop-blur-2xl lg:p-10"
+        >
+          <form id="contactForm" class="space-y-6">
+            <div class="form-control">
+              <label class="label" for="name">
+                <span class="label-text font-medium">Name</span>
+              </label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Enter your name"
+                required
+                class="input input-bordered bg-base-200/30 focus:bg-base-200 focus:border-accent w-full backdrop-blur-sm transition-all"
+              />
+            </div>
+
+            <div class="form-control">
+              <label class="label" for="email">
+                <span class="label-text font-medium">Email</span>
+              </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Your email address"
+                required
+                class="input input-bordered bg-base-200/30 focus:bg-base-200 focus:border-accent w-full backdrop-blur-sm transition-all"
+              />
+            </div>
+
+            <div class="form-control">
+              <label class="label" for="message">
+                <span class="label-text font-medium">Message</span>
+              </label>
+              <textarea
+                name="message"
+                id="message"
+                placeholder="Share your message here"
+                rows="5"
+                required
+                class="textarea textarea-bordered bg-base-200/30 focus:bg-base-200 focus:border-accent w-full resize-none backdrop-blur-sm transition-all"
+              ></textarea>
+            </div>
+
+            <div id="formMessage" class="hidden rounded-lg p-4 text-sm"></div>
+
+            <button
+              type="submit"
+              id="submitBtn"
+              class="btn btn-accent shadow-accent/20 hover:shadow-accent/40 w-full text-white shadow-lg transition-all hover:scale-[1.02]"
+            >
+              Send Message
+            </button>
+          </form>
+        </div>
+
+        <!-- Decorative Elements behind card -->
+        <div
+          class="bg-accent/10 absolute -top-10 -right-10 -z-10 h-64 w-64 rounded-full blur-3xl"
+        >
+        </div>
+        <div
+          class="absolute -bottom-10 -left-10 -z-10 h-64 w-64 rounded-full bg-blue-500/10 blur-3xl"
+        >
+        </div>
+      </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div
+      id="successModal"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-black/60 p-4 backdrop-blur-sm"
+    >
+      <div
+        class="bg-base-100/90 w-full max-w-md scale-95 transform rounded-2xl border border-white/10 p-8 opacity-0 shadow-2xl backdrop-blur-xl transition-all duration-300"
+        id="modalContent"
+      >
+        <div class="mb-6 flex justify-center">
+          <div
+            class="bg-success/10 flex h-20 w-20 items-center justify-center rounded-full"
+          >
+            <svg
+              class="text-success h-10 w-10"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M5 13l4 4L19 7"></path>
+            </svg>
+          </div>
+        </div>
+        <h3 class="mb-2 text-center text-2xl font-bold">Message Sent!</h3>
+        <p class="text-muted text-center">
+          Thanks for reaching out. I'll get back to you as soon as possible.
+        </p>
+        <button class="btn btn-ghost mt-8 w-full" id="closeModalBtn"
+          >Close</button
+        >
+        ```
+        {
+          about.techStack.tools
+            .concat(about.techStack.tools)
+            .concat(about.techStack.tools)
+            .concat(about.techStack.tools)
+            .map((tech, index) => (
+              <div
+                class="group flex flex-shrink-0 flex-col items-center"
+                style="min-width: 140px; padding: 8px;"
+              >
+                <div class="group-hover:border-accent/50 flex h-24 w-24 items-center justify-center rounded-xl border border-white/20 bg-white/10 shadow-lg backdrop-blur-xl transition-all group-hover:scale-110 group-hover:bg-white/20">
+                  <img
+                    src={tech.icon}
+                    alt={tech.name}
+                    class={`h-14 w-14 ${
+                      tech.name === "Apache Kafka" ? "kafka-icon" : ""
+                    }`}
+                  />
+                </div>
+                <p class="mt-2 text-center text-sm font-medium opacity-0 transition-opacity group-hover:opacity-100">
+                  {tech.name}
+                </p>
+              </div>
+            ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* Social icon styling */
+  .social-icon {
+    background-color: currentColor;
+    /* Default to text color (black/dark in light mode) */
+    transition: background-color 0.3s ease;
+  }
+
+  :global([data-theme="dark"]) .social-icon {
+    background-color: var(--color-accent);
+    /* Use accent color in dark mode */
+  }
+
+  @keyframes infiniteScroll {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-25%);
+    }
+  }
+</style>
+
+<script>
+  // Smooth scroll to contact section on page load if hash is #contact
+  if (window.location.hash === "#contact") {
+    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  const form = document.getElementById("contactForm") as HTMLFormElement;
+  const submitBtn = document.getElementById("submitBtn") as HTMLButtonElement;
+  const formMessage = document.getElementById("formMessage") as HTMLDivElement;
+  const successModal = document.getElementById(
+    "successModal",
+  ) as HTMLDivElement;
+  const closeModalBtn = document.getElementById(
+    "closeModalBtn",
+  ) as HTMLButtonElement;
+  const modalContent = document.getElementById(
+    "modalContent",
+  ) as HTMLDivElement;
+
+  function showModal() {
+    successModal.classList.remove("hidden");
+    successModal.classList.add("flex");
+    // Small delay to allow display:flex to apply before opacity transition
+    setTimeout(() => {
+      modalContent.classList.remove("scale-95", "opacity-0");
+      modalContent.classList.add("scale-100", "opacity-100");
+    }, 10);
+  }
+
+  function hideModal() {
+    modalContent.classList.remove("scale-100", "opacity-100");
+    modalContent.classList.add("scale-95", "opacity-0");
+    setTimeout(() => {
+      successModal.classList.add("hidden");
+      successModal.classList.remove("flex");
+    }, 300);
+  }
+
+  closeModalBtn?.addEventListener("click", hideModal);
+  successModal?.addEventListener("click", (e) => {
+    if (e.target === successModal) hideModal();
+  });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Disable submit button
+    submitBtn.disabled = true;
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = "Sending...";
+    formMessage.classList.add("hidden");
+
+    // Get form data
+    const name = (document.getElementById("name") as HTMLInputElement).value;
+    const email = (document.getElementById("email") as HTMLInputElement).value;
+    const message = (document.getElementById("message") as HTMLTextAreaElement)
+      .value;
+
+    try {
+      // Initialize Supabase client
+      const { createClient } = await import("@supabase/supabase-js");
+      const supabase = createClient(
+        import.meta.env.PUBLIC_SUPABASE_URL,
+        import.meta.env.PUBLIC_SUPABASE_ANON_KEY,
+      );
+
+      // Insert directly from frontend
+      const { error } = await supabase
+        .from("contact_messages")
+        .insert([{ name, email, message }]);
+
+      if (error) throw error;
+
+      // Show success modal
+      showModal();
+      form.reset();
+    } catch (error) {
+      // Error
+      console.error("Form submission error:", error);
+      formMessage.className = "rounded-lg bg-error/20 p-4 text-error";
+      formMessage.textContent =
+        error instanceof Error
+          ? error.message
+          : "Sorry, something went wrong. Please try again later.";
+      formMessage.classList.remove("hidden");
+    } finally {
+      // Re-enable submit button
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalBtnText;
+    }
+  });
+</script>
