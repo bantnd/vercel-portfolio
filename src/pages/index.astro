@@ -196,21 +196,6 @@ import Icon from "../components/Icon.astro";
     }
   </style>
 
-  <!-- Action Buttons -->
-  <div class="my-8 grid gap-3 lg:my-10 lg:grid-cols-2 lg:gap-12">
-    <a
-      class="btn btn-soft btn-accent light-mode-subtle w-full transition-all hover:scale-[1.02]"
-      href={about.resumeHref}
-      target="_blank"
-      >Open Resume
-      <SquareArrowOutUpRight size="1rem" />
-    </a>
-    <a
-      class="btn btn-soft btn-accent light-mode-subtle w-full transition-all hover:scale-[1.02]"
-      href="/projects">My Projects</a
-    >
-  </div>
-
   <!-- Work Experience & Education in Two Columns on Desktop -->
   <div class="grid gap-10 lg:grid-cols-2 lg:gap-12">
     <section>
@@ -248,6 +233,17 @@ import Icon from "../components/Icon.astro";
         }
       </div>
     </section>
+  </div>
+
+  <!-- Action Button -->
+  <div class="my-8 flex justify-center lg:my-10">
+    <a
+      class="btn btn-soft btn-accent light-mode-subtle w-full max-w-md transition-all hover:scale-[1.02]"
+      href={about.resumeHref}
+      target="_blank"
+      >Open Resume
+      <SquareArrowOutUpRight size="1rem" />
+    </a>
   </div>
 
   <!-- Contact Section -->
