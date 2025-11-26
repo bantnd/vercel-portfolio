@@ -419,32 +419,6 @@ import Icon from "../components/Icon.astro";
         <button class="btn btn-ghost mt-8 w-full" id="closeModalBtn"
           >Close</button
         >
-        ```
-        {
-          about.techStack.tools
-            .concat(about.techStack.tools)
-            .concat(about.techStack.tools)
-            .concat(about.techStack.tools)
-            .map((tech, index) => (
-              <div
-                class="group flex flex-shrink-0 flex-col items-center"
-                style="min-width: 140px; padding: 8px;"
-              >
-                <div class="group-hover:border-accent/50 flex h-24 w-24 items-center justify-center rounded-xl border border-white/20 bg-white/10 shadow-lg backdrop-blur-xl transition-all group-hover:scale-110 group-hover:bg-white/20">
-                  <img
-                    src={tech.icon}
-                    alt={tech.name}
-                    class={`h-14 w-14 ${
-                      tech.name === "Apache Kafka" ? "kafka-icon" : ""
-                    }`}
-                  />
-                </div>
-                <p class="mt-2 text-center text-sm font-medium opacity-0 transition-opacity group-hover:opacity-100">
-                  {tech.name}
-                </p>
-              </div>
-            ))
-        }
       </div>
     </div>
   </section>
