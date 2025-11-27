@@ -69,11 +69,11 @@ import Icon from "../components/Icon.astro";
     <!-- Databases -->
     <div>
       <div
-        class="relative overflow-hidden"
+        class="tech-scroll-container relative overflow-hidden"
         style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);"
       >
         <div
-          class="flex gap-8"
+          class="tech-scroll flex gap-8"
           style="animation: infiniteScroll 20s linear infinite; width: max-content;"
         >
           {
@@ -83,13 +83,17 @@ import Icon from "../components/Icon.astro";
               .concat(about.techStack.databases)
               .map((tech, index) => (
                 <div
-                  class="group flex flex-shrink-0 flex-col items-center"
+                  class="group flex flex-shrink-0 cursor-pointer flex-col items-center"
                   style="min-width: 140px; padding: 8px;"
                 >
-                  <div class="group-hover:border-accent/50 flex h-24 w-24 items-center justify-center rounded-xl border border-white/20 bg-white/10 shadow-lg backdrop-blur-xl transition-all group-hover:scale-110 group-hover:bg-white/20">
-                    <img src={tech.icon} alt={tech.name} class="h-14 w-14" />
+                  <div class="group-hover:border-accent/50 group-active:border-accent/70 flex h-24 w-24 items-center justify-center rounded-xl border border-white/20 bg-white/10 shadow-lg backdrop-blur-xl transition-all group-hover:scale-110 group-hover:bg-white/20 group-active:scale-105">
+                    <img
+                      src={tech.icon}
+                      alt={tech.name}
+                      class="pointer-events-none h-14 w-14"
+                    />
                   </div>
-                  <p class="mt-2 text-center text-sm font-medium opacity-0 transition-opacity group-hover:opacity-100">
+                  <p class="mt-2 text-center text-sm font-medium opacity-0 transition-opacity group-hover:opacity-100 group-active:opacity-100">
                     {tech.name}
                   </p>
                 </div>
@@ -102,11 +106,11 @@ import Icon from "../components/Icon.astro";
     <!-- Languages -->
     <div>
       <div
-        class="relative overflow-hidden"
+        class="tech-scroll-container relative overflow-hidden"
         style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);"
       >
         <div
-          class="flex gap-8"
+          class="tech-scroll flex gap-8"
           style="animation: infiniteScroll 25s linear infinite; width: max-content;"
         >
           {
@@ -116,13 +120,17 @@ import Icon from "../components/Icon.astro";
               .concat(about.techStack.languages)
               .map((tech, index) => (
                 <div
-                  class="group flex flex-shrink-0 flex-col items-center"
+                  class="group flex flex-shrink-0 cursor-pointer flex-col items-center"
                   style="min-width: 140px; padding: 8px;"
                 >
-                  <div class="group-hover:border-accent/50 flex h-24 w-24 items-center justify-center rounded-xl border border-white/20 bg-white/10 shadow-lg backdrop-blur-xl transition-all group-hover:scale-110 group-hover:bg-white/20">
-                    <img src={tech.icon} alt={tech.name} class="h-14 w-14" />
+                  <div class="group-hover:border-accent/50 group-active:border-accent/70 flex h-24 w-24 items-center justify-center rounded-xl border border-white/20 bg-white/10 shadow-lg backdrop-blur-xl transition-all group-hover:scale-110 group-hover:bg-white/20 group-active:scale-105">
+                    <img
+                      src={tech.icon}
+                      alt={tech.name}
+                      class="pointer-events-none h-14 w-14"
+                    />
                   </div>
-                  <p class="mt-2 text-center text-sm font-medium opacity-0 transition-opacity group-hover:opacity-100">
+                  <p class="mt-2 text-center text-sm font-medium opacity-0 transition-opacity group-hover:opacity-100 group-active:opacity-100">
                     {tech.name}
                   </p>
                 </div>
@@ -135,11 +143,11 @@ import Icon from "../components/Icon.astro";
     <!-- Tools -->
     <div>
       <div
-        class="relative overflow-hidden"
+        class="tech-scroll-container relative overflow-hidden"
         style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);"
       >
         <div
-          class="flex gap-8"
+          class="tech-scroll flex gap-8"
           style="animation: infiniteScroll 30s linear infinite; width: max-content;"
         >
           {
@@ -149,19 +157,19 @@ import Icon from "../components/Icon.astro";
               .concat(about.techStack.tools)
               .map((tech, index) => (
                 <div
-                  class="group flex flex-shrink-0 flex-col items-center"
+                  class="group flex flex-shrink-0 cursor-pointer flex-col items-center"
                   style="min-width: 140px; padding: 8px;"
                 >
-                  <div class="group-hover:border-accent/50 flex h-24 w-24 items-center justify-center rounded-xl border border-white/20 bg-white/10 shadow-lg backdrop-blur-xl transition-all group-hover:scale-110 group-hover:bg-white/20">
+                  <div class="group-hover:border-accent/50 group-active:border-accent/70 flex h-24 w-24 items-center justify-center rounded-xl border border-white/20 bg-white/10 shadow-lg backdrop-blur-xl transition-all group-hover:scale-110 group-hover:bg-white/20 group-active:scale-105">
                     <img
                       src={tech.icon}
                       alt={tech.name}
-                      class={`h-14 w-14 ${
+                      class={`pointer-events-none h-14 w-14 ${
                         tech.name === "Apache Kafka" ? "kafka-icon" : ""
                       }`}
                     />
                   </div>
-                  <p class="mt-2 text-center text-sm font-medium opacity-0 transition-opacity group-hover:opacity-100">
+                  <p class="mt-2 text-center text-sm font-medium opacity-0 transition-opacity group-hover:opacity-100 group-active:opacity-100">
                     {tech.name}
                   </p>
                 </div>
@@ -185,6 +193,7 @@ import Icon from "../components/Icon.astro";
       /* Use accent color in dark mode */
     }
 
+    /* Tech stack scroll animation */
     @keyframes infiniteScroll {
       0% {
         transform: translateX(0);
@@ -192,6 +201,20 @@ import Icon from "../components/Icon.astro";
 
       100% {
         transform: translateX(-25%);
+      }
+    }
+
+    /* Pause animation on hover or touch */
+    .tech-scroll-container:hover .tech-scroll,
+    .tech-scroll-container:active .tech-scroll {
+      animation-play-state: paused;
+    }
+
+    /* Touch-friendly cursor */
+    @media (hover: none) and (pointer: coarse) {
+      .cursor-pointer {
+        cursor: default;
+        -webkit-tap-highlight-color: transparent;
       }
     }
   </style>
