@@ -43,7 +43,8 @@ export const header: Header = { logoTitle: "B" };
 export const footer: Footer = {
   // parses html
   content:
-    "Made with ❤️ by Ban Tran • <a href='https://github.com/bantnd/vercel-portfolio' class='link'>Source Code</a>",
+    // "Made with ❤️ by Ban Tran • <a href='https://github.com/bantnd/vercel-portfolio' class='link'>Source Code</a>",
+    "Made with ❤️ by Ban Tran",
 };
 
 export const about: About = {
