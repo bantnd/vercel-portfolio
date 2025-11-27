@@ -70,11 +70,11 @@ import Icon from "../components/Icon.astro";
     <div>
       <div
         class="tech-scroll-container relative overflow-hidden"
-        style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);"
+        style="mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);"
       >
         <div
           class="tech-scroll flex gap-8"
-          style="animation: infiniteScroll 20s linear infinite; width: max-content;"
+          style="animation: infiniteScroll 30s linear infinite; width: max-content;"
         >
           {
             about.techStack.databases
@@ -107,7 +107,7 @@ import Icon from "../components/Icon.astro";
     <div>
       <div
         class="tech-scroll-container relative overflow-hidden"
-        style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);"
+        style="mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);"
       >
         <div
           class="tech-scroll flex gap-8"
@@ -144,11 +144,11 @@ import Icon from "../components/Icon.astro";
     <div>
       <div
         class="tech-scroll-container relative overflow-hidden"
-        style="mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);"
+        style="mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent); -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);"
       >
         <div
           class="tech-scroll flex gap-8"
-          style="animation: infiniteScroll 30s linear infinite; width: max-content;"
+          style="animation: infiniteScroll 50s linear infinite; width: max-content;"
         >
           {
             about.techStack.tools
@@ -557,5 +557,106 @@ import Icon from "../components/Icon.astro";
       submitBtn.disabled = false;
       submitBtn.textContent = originalBtnText;
     }
+  });
+
+  // Tech stack drag-to-scroll functionality
+  const techScrollContainers = document.querySelectorAll(
+    ".tech-scroll-container",
+  );
+
+  techScrollContainers.forEach((container) => {
+    const scrollElement = container.querySelector(
+      ".tech-scroll",
+    ) as HTMLElement;
+    if (!scrollElement) return;
+
+    let isDragging = false;
+    let startX = 0;
+    let scrollLeft = 0;
+    let isPaused = false;
+
+    const pauseAnimation = () => {
+      if (!isPaused) {
+        scrollElement.style.animationPlayState = "paused";
+        isPaused = true;
+      }
+    };
+
+    const resumeAnimation = () => {
+      if (isPaused && !isDragging) {
+        scrollElement.style.animationPlayState = "running";
+        isPaused = false;
+      }
+    };
+
+    // Mouse drag
+    container.addEventListener("mouseenter", pauseAnimation);
+    container.addEventListener("mouseleave", () => {
+      if (!isDragging) resumeAnimation();
+    });
+
+    container.addEventListener("mousedown", (e: MouseEvent) => {
+      isDragging = true;
+      (container as HTMLElement).style.cursor = "grabbing";
+      startX = e.pageX - (container as HTMLElement).offsetLeft;
+      scrollLeft = (container as HTMLElement).scrollLeft;
+      pauseAnimation();
+    });
+
+    container.addEventListener("mousemove", (e: MouseEvent) => {
+      if (!isDragging) return;
+      e.preventDefault();
+      const x = e.pageX - (container as HTMLElement).offsetLeft;
+      const walk = (x - startX) * 1.2;
+      (container as HTMLElement).scrollLeft = scrollLeft - walk;
+    });
+
+    container.addEventListener("mouseup", () => {
+      isDragging = false;
+      (container as HTMLElement).style.cursor = "grab";
+      setTimeout(resumeAnimation, 100);
+    });
+
+    container.addEventListener("mouseleave", () => {
+      if (isDragging) {
+        isDragging = false;
+        (container as HTMLElement).style.cursor = "grab";
+      }
+    });
+
+    // Touch drag
+    let touchStartX = 0;
+    let touchScrollLeft = 0;
+
+    container.addEventListener(
+      "touchstart",
+      (e: TouchEvent) => {
+        touchStartX =
+          e.touches[0].pageX - (container as HTMLElement).offsetLeft;
+        touchScrollLeft = (container as HTMLElement).scrollLeft;
+        pauseAnimation();
+      },
+      { passive: true },
+    );
+
+    container.addEventListener(
+      "touchmove",
+      (e: TouchEvent) => {
+        const x = e.touches[0].pageX - (container as HTMLElement).offsetLeft;
+        const walk = (x - touchStartX) * 1.2;
+        (container as HTMLElement).scrollLeft = touchScrollLeft - walk;
+      },
+      { passive: true },
+    );
+
+    container.addEventListener(
+      "touchend",
+      () => {
+        setTimeout(resumeAnimation, 100);
+      },
+      { passive: true },
+    );
+
+    (container as HTMLElement).style.cursor = "grab";
   });
 </script>
