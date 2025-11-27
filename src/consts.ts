@@ -14,6 +14,7 @@ import FabricIcon from "./assets/icons/fabric.svg";
 import LokiIcon from "./assets/icons/loki.svg";
 import ApisixIcon from "./assets/icons/apisix.svg";
 import LonghornIcon from "./assets/icons/longhorn.svg";
+import MaterializeIcon from "./assets/icons/materialize.svg";
 
 export const SITE_URL: string = "http://localhost:4321";
 
@@ -128,8 +129,9 @@ export const about: About = {
       { name: "Elasticsearch", icon: "https://cdn.simpleicons.org/elasticsearch" },
       { name: "Redis", icon: "https://cdn.simpleicons.org/redis" },
       { name: "DuckDB", icon: "https://cdn.simpleicons.org/duckdb" },
-      { name: "Trino", icon: "https://cdn.simpleicons.org/trino" },
       { name: "Apache Spark", icon: "https://cdn.simpleicons.org/apachespark" },
+      { name: "Trino", icon: "https://cdn.simpleicons.org/trino" },
+      { name: "Materialize", icon: MaterializeIcon.src },
       { name: "Hive", icon: "https://cdn.simpleicons.org/apachehive" },
       { name: "Apache Flink", icon: "https://cdn.simpleicons.org/apacheflink" },
     ],
