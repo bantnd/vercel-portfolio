@@ -116,7 +116,7 @@ export const about: About = {
   ],
   // parses html
   getInTouch:
-    "Drop me an email at <a href='mailto:ban.ndtran@gmail.com' class='primary-underline'>ban.ndtran@gmail.com</a> or connect with me on one of my socials.",
+    "Have a project in mind or just want to chat? I'm always open to discussing new ideas and opportunities. Feel free to reach out directly or connect with me on social media.",
   techStack: {
     databases: [
       { name: "PostgreSQL", icon: "https://cdn.simpleicons.org/postgresql" },
