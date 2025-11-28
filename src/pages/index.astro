@@ -572,7 +572,7 @@ import Icon from "../components/Icon.astro";
   // Tech stack drag-to-scroll functionality
   const techScrollContainers = document.querySelectorAll(
     ".tech-scroll-container",
-  );
+  ) as NodeListOf<HTMLElement>;
 
   techScrollContainers.forEach((container) => {
     const scrollElement = container.querySelector(
