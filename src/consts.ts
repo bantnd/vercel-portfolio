@@ -6,6 +6,7 @@ import ProfilePic from "./assets/profile-pic.png";
 
 import ZeroTrust from "./assets/projects/ZeroTrust.png";
 import Kubernetes from "./assets/projects/Kubernetes.svg";
+import AvifLogo from "./assets/projects/Avif-logo-rgb.svg";
 import MSSQLIcon from "./assets/icons/mssql.svg";
 import BytebaseIcon from "./assets/icons/bytebase.svg";
 import LinkedinIcon from "./assets/icons/linkedin.svg";
@@ -54,7 +55,7 @@ export const about: About = {
   profilePic: ProfilePic,
   // parses html
   description:
-    "As a seasoned data engineer and analyst, from sculpting intricate data ecosystems to orchestrating seamless flows, my expertise lies in strengthening the foundations of digital realms. Together, we'll embark on an exhilarating journey to uncover the hidden gems within data universe, transforming its potential into unprecedented achievements.",
+    "I'm a Computer Scientist and DataOps-Sec specialist with a passion for building robust, scalable data infrastructure. Currently leading data control initiatives at Esuhai Group, I architect enterprise-grade solutions using **Kafka**, **Spark**, and **Kubernetes**. My expertise spans the full data lifecycle—from orchestrating complex ETL pipelines and securing data flows with **Vault** and **Keycloak**, to delivering actionable insights via **Power BI**. I bridge the gap between Data Engineering, Security, and DevOps to turn raw data into strategic assets.",
   links: [
     {
       icon: "Github",
@@ -203,7 +204,16 @@ export const projects: Project[] = [
       "Migrated legacy applications to HA Kubernetes clusters. Implemented complete CI/CD pipelines, monitoring stack, and automated deployment workflows.",
     sourceHref: "",
     liveHref: "",
-  }
+  },
+  {
+    logoImage: AvifLogo,
+    title: "AVIF Image Converter",
+    techs: ["Go", "Libvips", "AVIF"],
+    description:
+      "A project aimed at reducing our company's storage usage by converting existing images into the AVIF format. We have built an API that efficiently converts images to AVIF, enabling smaller file sizes while maintaining image quality. This helps optimize storage costs and improve delivery performance.",
+    sourceHref: "",
+    liveHref: "/projects/image-converter",
+  },
 ];
 
 // add blog articles in /src/content/blog
