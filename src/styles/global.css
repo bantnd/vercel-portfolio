@@ -8,8 +8,10 @@
 
 /* Reader mode warm background for light theme */
 [data-theme="light"] {
-  --b1: 93% 0.09 75 !important;  /* Warmer cream/beige background */
-  --bc: 25% 0.015 100 !important;  /* Darker text for contrast */
+  --b1: 93% 0.09 75 !important;
+  /* Warmer cream/beige background */
+  --bc: 25% 0.015 100 !important;
+  /* Darker text for contrast */
 }
 
 [data-theme="light"] body,
@@ -44,99 +46,99 @@
   .light-mode-subtle {
     backdrop-filter: blur(20px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15), 
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.3) !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
   }
 
   /* Light mode acrylic styling */
   [data-theme="light"] .light-mode-subtle.btn-primary {
     background: rgba(255, 255, 255, 0.6) !important;
-    background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.7) 0%, 
-                rgba(255, 255, 255, 0.5) 100%) !important;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.7) 0%,
+        rgba(255, 255, 255, 0.5) 100%) !important;
     border: 1px solid rgba(255, 255, 255, 0.4) !important;
     color: oklch(var(--a)) !important;
   }
-  
+
   [data-theme="light"] .light-mode-subtle.btn-primary *,
   [data-theme="light"] .light-mode-subtle.btn-primary svg {
     color: oklch(var(--a)) !important;
   }
-  
+
   [data-theme="light"] .light-mode-subtle.btn-primary:hover {
     background: rgba(255, 255, 255, 0.8) !important;
-    background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.85) 0%, 
-                rgba(255, 255, 255, 0.65) 100%) !important;
-    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25), 
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.5) !important;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.85) 0%,
+        rgba(255, 255, 255, 0.65) 100%) !important;
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.5) !important;
     transform: translateY(-2px) !important;
   }
-  
+
   [data-theme="light"] .light-mode-subtle.btn-soft,
   [data-theme="light"] .light-mode-subtle.btn-accent {
     background: rgba(255, 255, 255, 0.5) !important;
-    background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.6) 0%, 
-                rgba(255, 255, 255, 0.4) 100%) !important;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 255, 255, 0.4) 100%) !important;
     border: 1px solid rgba(255, 255, 255, 0.3) !important;
   }
-  
+
   [data-theme="light"] .light-mode-subtle.btn-soft:hover,
   [data-theme="light"] .light-mode-subtle.btn-accent:hover {
     background: rgba(255, 255, 255, 0.7) !important;
-    background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.8) 0%, 
-                rgba(255, 255, 255, 0.6) 100%) !important;
-    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25), 
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.5) !important;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.8) 0%,
+        rgba(255, 255, 255, 0.6) 100%) !important;
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.25),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.5) !important;
     transform: translateY(-2px) !important;
   }
 
   /* Dark mode acrylic effect */
   [data-theme="dark"] .light-mode-subtle.btn-primary {
     background: rgba(0, 0, 0, 0.3) !important;
-    background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.15) 0%, 
-                rgba(255, 255, 255, 0.05) 100%) !important;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0.05) 100%) !important;
     border: 1px solid rgba(255, 255, 255, 0.18) !important;
     color: oklch(var(--a)) !important;
   }
-  
+
   [data-theme="dark"] .light-mode-subtle.btn-primary *,
   [data-theme="dark"] .light-mode-subtle.btn-primary svg {
     color: oklch(var(--a)) !important;
   }
-  
+
   [data-theme="dark"] .light-mode-subtle.btn-primary:hover {
     background: rgba(255, 255, 255, 0.2) !important;
-    background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.25) 0%, 
-                rgba(255, 255, 255, 0.1) 100%) !important;
-    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.3), 
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.2) !important;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.25) 0%,
+        rgba(255, 255, 255, 0.1) 100%) !important;
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.2) !important;
     transform: translateY(-2px) !important;
   }
-  
+
   [data-theme="dark"] .light-mode-subtle.btn-soft,
   [data-theme="dark"] .light-mode-subtle.btn-accent {
     background: rgba(0, 0, 0, 0.25) !important;
-    background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.12) 0%, 
-                rgba(255, 255, 255, 0.04) 100%) !important;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(255, 255, 255, 0.04) 100%) !important;
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
     color: rgba(255, 255, 255, 0.9) !important;
   }
-  
+
   [data-theme="dark"] .light-mode-subtle.btn-soft:hover,
   [data-theme="dark"] .light-mode-subtle.btn-accent:hover {
     background: rgba(255, 255, 255, 0.18) !important;
-    background: linear-gradient(135deg, 
-                rgba(255, 255, 255, 0.22) 0%, 
-                rgba(255, 255, 255, 0.08) 100%) !important;
-    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.3), 
-                inset 0 1px 0 0 rgba(255, 255, 255, 0.2) !important;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.22) 0%,
+        rgba(255, 255, 255, 0.08) 100%) !important;
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.2) !important;
     transform: translateY(-2px) !important;
   }
 
@@ -160,6 +162,7 @@
     from {
       transform: translateX(0);
     }
+
     to {
       transform: translateX(-25%);
     }
@@ -211,5 +214,12 @@
   /* Invert Kafka logo in dark mode for better visibility */
   [data-theme="dark"] .kafka-icon {
     filter: invert(1) brightness(1.1);
+  }
+
+  /* Glassmorphism effect */
+  .glass-effect {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
   }
 }
