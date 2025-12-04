@@ -56,8 +56,28 @@ const { title } = meta.about;
         </style>
     </head>
     <body class="min-h-screen py-8 print:py-0">
-        <!-- Floating Print Button -->
-        <div class="print-hidden fixed right-8 bottom-8 z-50">
+        <!-- Floating Buttons -->
+        <div class="print-hidden fixed right-8 bottom-8 z-50 flex gap-3">
+            <button
+                onclick="history.back()"
+                class="flex items-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 font-semibold text-slate-900 shadow-xl transition-all hover:scale-105 hover:bg-slate-100"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path d="m12 19-7-7 7-7"></path>
+                    <path d="M19 12H5"></path>
+                </svg>
+                Back
+            </button>
             <button
                 onclick="window.print()"
                 class="flex items-center gap-2 rounded-full bg-slate-900 px-6 py-3 font-semibold text-white shadow-xl transition-all hover:scale-105 hover:bg-slate-800"
