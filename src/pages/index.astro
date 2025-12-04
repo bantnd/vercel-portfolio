@@ -13,7 +13,13 @@ import Icon from "../components/Icon.astro";
     <div>
       <h1 set:html={about.headLine} />
       <p class="mt-2">{about.tagLine}</p>
-      <p set:html={about.description} class="text-muted mt-4" />
+      <p
+        set:html={about.description.replace(
+          /\*\*(.*?)\*\*/g,
+          "<strong>$1</strong>",
+        )}
+        class="text-muted mt-4"
+      />
       <div class="mt-8 mb-6 flex gap-3">
         {
           about.links.map((link) => (
