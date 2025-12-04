@@ -190,7 +190,7 @@ export const projects: Project[] = [
   {
     logoImage: ZeroTrust,
     title: "Zero-Trust Security Infrastructure",
-    techs: ["Vault", "Keycloak", "Coraza WAF", "APISIX"],
+    techs: ["Vault", "Keycloak", "APISIX", "Coraza WAF"],
     description:
       "Designed and implemented enterprise security architecture with centralized secrets management, SSO/OpenID authentication, and API gateway with WAF protection.",
     sourceHref: "",

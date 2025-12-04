@@ -1,0 +1,301 @@
+---
+import { about, projects, meta } from "../consts";
+import { Mail, MapPin, Globe, Github, Linkedin, Printer } from "lucide-react";
+
+const { title } = meta.about;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CV - Ban Tran</title>
+        <meta name="description" content={`Curriculum Vitae of ${title}`} />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            @import "tailwindcss";
+            @plugin "@tailwindcss/typography";
+
+            @layer base {
+                body {
+                    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+                    background-color: #f1f5f9;
+                    color: #1e293b;
+                    -webkit-font-smoothing: antialiased;
+                }
+            }
+
+            @media print {
+                @page {
+                    margin: 1cm;
+                    size: A4;
+                }
+                body {
+                    background: white !important;
+                }
+                .print-hidden {
+                    display: none !important;
+                }
+                .page-container {
+                    box-shadow: none !important;
+                    margin: 0 !important;
+                    padding: 0 !important;
+                    max-width: none !important;
+                }
+                .break-inside-avoid {
+                    break-inside: avoid;
+                }
+            }
+        </style>
+    </head>
+    <body class="min-h-screen py-8 print:py-0">
+        <!-- Floating Print Button -->
+        <div class="print-hidden fixed right-8 bottom-8 z-50">
+            <button
+                onclick="window.print()"
+                class="flex items-center gap-2 rounded-full bg-slate-900 px-6 py-3 font-semibold text-white shadow-xl transition-all hover:scale-105 hover:bg-slate-800"
+            >
+                <Printer size="1.25rem" />
+                Print to PDF
+            </button>
+        </div>
+
+        <!-- A4 Paper Container -->
+        <main
+            class="page-container mx-auto max-w-[210mm] bg-white p-8 shadow-xl md:p-12 print:shadow-none"
+        >
+            <!-- Header -->
+            <header class="mb-8 border-b-2 border-slate-200 pb-8">
+                <h1 class="text-4xl font-bold tracking-tight text-slate-900">
+                    Ban Tran
+                </h1>
+                <p class="mt-2 text-xl font-medium text-emerald-600">
+                    {about.tagLine}
+                </p>
+
+                <div
+                    class="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-600"
+                >
+                    {
+                        about.links.map((link) => {
+                            if (link.icon === "Mail") {
+                                return (
+                                    <a
+                                        href={link.href}
+                                        class="flex items-center gap-1.5 hover:text-emerald-600"
+                                    >
+                                        <Mail size="0.875rem" />
+                                        <span>
+                                            {link.href.replace("mailto:", "")}
+                                        </span>
+                                    </a>
+                                );
+                            }
+                            if (link.icon === "Linkedin") {
+                                return (
+                                    <a
+                                        href={link.href}
+                                        target="_blank"
+                                        class="flex items-center gap-1.5 hover:text-emerald-600"
+                                    >
+                                        <Linkedin size="0.875rem" />
+                                        <span>linkedin.com/in/ban-tran</span>
+                                    </a>
+                                );
+                            }
+                            if (link.icon === "Github") {
+                                return (
+                                    <a
+                                        href={link.href}
+                                        target="_blank"
+                                        class="flex items-center gap-1.5 hover:text-emerald-600"
+                                    >
+                                        <Github size="0.875rem" />
+                                        <span>github.com/bantnd</span>
+                                    </a>
+                                );
+                            }
+                        })
+                    }
+                    <span class="flex items-center gap-1.5">
+                        <Globe size="0.875rem" />
+                        <span>bantnd.vercel.app</span>
+                    </span>
+                    <span class="flex items-center gap-1.5">
+                        <MapPin size="0.875rem" />
+                        <span>Ho Chi Minh City, Vietnam</span>
+                    </span>
+                </div>
+            </header>
+
+            <!-- Summary -->
+            <section class="mb-8">
+                <h2
+                    class="mb-3 text-sm font-bold tracking-widest text-emerald-600 uppercase"
+                >
+                    Professional Summary
+                </h2>
+                <p
+                    class="text-sm leading-relaxed text-slate-600"
+                    set:html={about.description.replace(
+                        /\*\*(.*?)\*\*/g,
+                        '<strong class="font-semibold text-slate-800">$1</strong>',
+                    )}
+                />
+            </section>
+
+            <!-- Experience -->
+            <section class="mb-8">
+                <h2
+                    class="mb-4 text-sm font-bold tracking-widest text-emerald-600 uppercase"
+                >
+                    Work Experience
+                </h2>
+                <div class="space-y-6">
+                    {
+                        about.workExperience.map((job) => (
+                            <div class="break-inside-avoid">
+                                <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                                    <h3 class="text-base font-bold text-slate-900">
+                                        {job.title}
+                                    </h3>
+                                    <span class="text-sm font-medium text-slate-500">
+                                        {job.timeline}
+                                    </span>
+                                </div>
+                                <p class="mb-2 text-sm font-semibold text-emerald-600">
+                                    {job.company}
+                                </p>
+                                <p class="text-sm leading-relaxed text-slate-600">
+                                    {job.description}
+                                </p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </section>
+
+            <!-- Skills -->
+            <section class="mb-8 break-inside-avoid">
+                <h2
+                    class="mb-4 text-sm font-bold tracking-widest text-emerald-600 uppercase"
+                >
+                    Technical Skills
+                </h2>
+                <div class="space-y-3">
+                    <div>
+                        <h3
+                            class="mb-1.5 text-xs font-semibold tracking-wider text-slate-500 uppercase"
+                        >
+                            Languages
+                        </h3>
+                        <div class="flex flex-wrap gap-1.5">
+                            {
+                                about.techStack.languages.map((tech) => (
+                                    <span class="rounded-md border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs font-medium text-slate-700 print:border-slate-300">
+                                        {tech.name}
+                                    </span>
+                                ))
+                            }
+                        </div>
+                    </div>
+                    <div>
+                        <h3
+                            class="mb-1.5 text-xs font-semibold tracking-wider text-slate-500 uppercase"
+                        >
+                            Databases & Data
+                        </h3>
+                        <div class="flex flex-wrap gap-1.5">
+                            {
+                                about.techStack.databases
+                                    .slice(0, 10)
+                                    .map((tech) => (
+                                        <span class="rounded-md border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs font-medium text-slate-700 print:border-slate-300">
+                                            {tech.name}
+                                        </span>
+                                    ))
+                            }
+                        </div>
+                    </div>
+                    <div>
+                        <h3
+                            class="mb-1.5 text-xs font-semibold tracking-wider text-slate-500 uppercase"
+                        >
+                            DevOps & Tools
+                        </h3>
+                        <div class="flex flex-wrap gap-1.5">
+                            {
+                                about.techStack.tools
+                                    .slice(0, 15)
+                                    .map((tech) => (
+                                        <span class="rounded-md border border-slate-200 bg-slate-50 px-2 py-0.5 text-xs font-medium text-slate-700 print:border-slate-300">
+                                            {tech.name}
+                                        </span>
+                                    ))
+                            }
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects -->
+            <section class="mb-8 break-inside-avoid">
+                <h2
+                    class="mb-4 text-sm font-bold tracking-widest text-emerald-600 uppercase"
+                >
+                    Key Projects
+                </h2>
+                <div class="grid gap-4 sm:grid-cols-2">
+                    {
+                        projects.slice(0, 4).map((project) => (
+                            <div class="rounded-lg border border-slate-200 p-4 print:border-slate-300">
+                                <h3 class="mb-1 font-bold text-slate-900">
+                                    {project.title}
+                                </h3>
+                                <p class="mb-2 text-xs font-medium text-emerald-600">
+                                    {project.techs.join(" • ")}
+                                </p>
+                                <p class="text-xs leading-relaxed text-slate-600">
+                                    {project.description}
+                                </p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="break-inside-avoid">
+                <h2
+                    class="mb-4 text-sm font-bold tracking-widest text-emerald-600 uppercase"
+                >
+                    Education
+                </h2>
+                {
+                    about.education.map((edu) => (
+                        <div>
+                            <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                                <h3 class="text-base font-bold text-slate-900">
+                                    {edu.title}
+                                </h3>
+                                <span class="text-sm font-medium text-slate-500">
+                                    {edu.timeline}
+                                </span>
+                            </div>
+                            <p class="text-sm font-semibold text-emerald-600">
+                                {edu.institution}
+                            </p>
+                        </div>
+                    ))
+                }
+            </section>
+        </main>
+    </body>
+</html>
