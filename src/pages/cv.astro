@@ -89,7 +89,7 @@ const { title } = meta.about;
 
         <!-- A4 Paper Container -->
         <main
-            class="page-container mx-auto max-w-[210mm] bg-white p-8 shadow-xl md:p-12 print:shadow-none"
+            class="page-container mx-auto max-w-[210mm] bg-white px-12 py-10 shadow-xl md:px-16 md:py-12 print:shadow-none"
         >
             <!-- Header -->
             <header class="mb-8 border-b-2 border-slate-200 pb-8">
@@ -101,7 +101,7 @@ const { title } = meta.about;
                 </p>
 
                 <div
-                    class="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-600"
+                    class="mt-5 grid grid-cols-2 gap-x-8 gap-y-2.5 text-sm text-slate-600 sm:grid-cols-3"
                 >
                     {
                         about.links.map((link) => {
@@ -156,7 +156,7 @@ const { title } = meta.about;
             </header>
 
             <!-- Summary -->
-            <section class="mb-8">
+            <section class="mb-10">
                 <h2
                     class="mb-3 text-sm font-bold tracking-widest text-emerald-600 uppercase"
                 >
@@ -172,7 +172,7 @@ const { title } = meta.about;
             </section>
 
             <!-- Experience -->
-            <section class="mb-8">
+            <section class="mb-10">
                 <h2
                     class="mb-4 text-sm font-bold tracking-widest text-emerald-600 uppercase"
                 >
@@ -182,11 +182,11 @@ const { title } = meta.about;
                     {
                         about.workExperience.map((job) => (
                             <div class="break-inside-avoid">
-                                <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                                <div class="flex items-start justify-between gap-4">
                                     <h3 class="text-base font-bold text-slate-900">
                                         {job.title}
                                     </h3>
-                                    <span class="text-sm font-medium text-slate-500">
+                                    <span class="shrink-0 text-sm font-medium text-slate-500 tabular-nums">
                                         {job.timeline}
                                     </span>
                                 </div>
@@ -203,7 +203,7 @@ const { title } = meta.about;
             </section>
 
             <!-- Skills -->
-            <section class="mb-8 break-inside-avoid">
+            <section class="mb-10 break-inside-avoid">
                 <h2
                     class="mb-4 text-sm font-bold tracking-widest text-emerald-600 uppercase"
                 >
@@ -266,7 +266,7 @@ const { title } = meta.about;
             </section>
 
             <!-- Projects -->
-            <section class="mb-8 break-inside-avoid">
+            <section class="mb-10 break-inside-avoid">
                 <h2
                     class="mb-4 text-sm font-bold tracking-widest text-emerald-600 uppercase"
                 >
@@ -301,11 +301,11 @@ const { title } = meta.about;
                 {
                     about.education.map((edu) => (
                         <div>
-                            <div class="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                            <div class="flex items-start justify-between gap-4">
                                 <h3 class="text-base font-bold text-slate-900">
                                     {edu.title}
                                 </h3>
-                                <span class="text-sm font-medium text-slate-500">
+                                <span class="shrink-0 text-sm font-medium text-slate-500 tabular-nums">
                                     {edu.timeline}
                                 </span>
                             </div>
