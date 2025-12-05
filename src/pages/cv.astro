@@ -1,6 +1,7 @@
 ---
 import { about, projects, meta } from "../consts";
-import { Mail, MapPin, Globe, Github, Linkedin, Printer } from "lucide-react";
+import { Mail, MapPin, Globe, Printer } from "lucide-react";
+import linkedinIcon from "../assets/icons/linkedin.svg";
 
 const { title } = meta.about;
 ---
@@ -127,7 +128,11 @@ const { title } = meta.about;
                                         target="_blank"
                                         class="flex items-center gap-1.5 hover:text-emerald-600"
                                     >
-                                        <Linkedin size="0.875rem" />
+                                        <img
+                                            src={linkedinIcon.src}
+                                            alt="LinkedIn"
+                                            class="h-3.5 w-3.5"
+                                        />
                                         <span>linkedin.com/in/ban-tran</span>
                                     </a>
                                 );
@@ -139,17 +144,25 @@ const { title } = meta.about;
                                         target="_blank"
                                         class="flex items-center gap-1.5 hover:text-emerald-600"
                                     >
-                                        <Github size="0.875rem" />
+                                        <img
+                                            src="https://cdn.simpleicons.org/github/475569"
+                                            alt="GitHub"
+                                            class="h-3.5 w-3.5"
+                                        />
                                         <span>github.com/bantnd</span>
                                     </a>
                                 );
                             }
                         })
                     }
-                    <span class="flex items-center gap-1.5">
+                    <a
+                        href="https://bantnd.vercel.app"
+                        target="_blank"
+                        class="flex items-center gap-1.5 hover:text-emerald-600"
+                    >
                         <Globe size="0.875rem" />
                         <span>bantnd.vercel.app</span>
-                    </span>
+                    </a>
                     <span class="flex items-center gap-1.5">
                         <MapPin size="0.875rem" />
                         <span>Ho Chi Minh City, Vietnam</span>
