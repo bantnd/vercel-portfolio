@@ -18,14 +18,14 @@ interface WorkExperience {
   title: string;
   timeline: string;
   company: string;
-  description: string;
+  description: string | string[];
 }
 
 interface Education {
   title: string;
   timeline: string;
   institution: string;
-  description: string;
+  description: string | string[];
 }
 
 interface TechStack {
@@ -45,7 +45,6 @@ export interface About {
   profilePic: ImageMetadata;
   description: string;
   links: IconLink[];
-  resumeHref: string;
   workExperience: WorkExperience[];
   education: Education[];
   getInTouch: string;

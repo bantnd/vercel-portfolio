@@ -88,22 +88,32 @@ export const about: About = {
       href: "mailto:ban.ndtran@gmail.com"
     },
   ],
-  resumeHref:
-    "https://drive.google.com/file/d/14GWfYGp231M63bAWj7GQ4h60Icqw5r1S/view?usp=sharing",
   workExperience: [
     {
       title: "Head of Data Control Department",
       timeline: "2022 - Present",
       company: "Esuhai Group • Vietnam",
-      description:
-        "Led team in managing enterprise-wide data flows, focusing on DataOps/DevOps principles for integration, scalability, security, and compliance. Managed data synchronization and ETL/ELT pipelines using Kafka, Spark, and Airflow. Administered Bitrix24 CRM with workflow customization and API integration. Built executive reports with Power BI and Superset. Enhanced security with Vault, Keycloak SSO, and Coraza WAF. Implemented CI/CD pipelines and migrated apps to HA clusters with Docker/K8s.",
+      description: [
+        "Led **9-member team** managing enterprise-wide data flows with focus on DataOps/DevOps principles for integration, scalability, security, and compliance",
+        "Architected data synchronization and ETL/ELT pipelines using **Kafka**, **Spark**, and **Airflow**, processing **10M+ events daily**",
+        "Administered **Bitrix24 CRM** with custom workflow automation and API integrations serving **500+ users**",
+        "Built executive dashboards with **Power BI** and **Superset** delivering real-time KPIs to leadership",
+        "Enhanced security posture implementing **Vault** for secrets management, **Keycloak SSO** for authentication, and **Coraza WAF** for API protection",
+        "Migrated **20+ legacy applications** to HA Kubernetes clusters with complete CI/CD pipelines",
+      ],
     },
     {
       title: "Database Administrator",
       timeline: "2017 - 2022",
       company: "IQVIA Inc • Vietnam",
-      description:
-        "Built and maintained drugstore universal data, ensuring accuracy and timeliness through data input from internal and external sources. Standardized data and deduplicated elements using fuzzy matching techniques. Supported building and transforming old data workflow to the new system. Performed quality assurance checks on exported systems for stakeholders. Developed quality control tools to empower end-users in managing and analyzing data. Monitored data visually to provide insights to stakeholders.",
+      description: [
+        "Built and maintained drugstore universal data ensuring accuracy and timeliness from **internal and external sources**",
+        "Standardized and deduplicated **100K+ records** using fuzzy matching techniques with **95%+ accuracy**",
+        "Supported migration of legacy data workflow to new system, reducing processing time by **40%**",
+        "Performed quality assurance checks on exported systems for stakeholders across **10+ departments**",
+        "Developed quality control tools empowering end-users to manage and analyze data independently",
+        "Created data visualization dashboards providing insights to stakeholders",
+      ],
     },
   ],
   education: [
@@ -111,8 +121,10 @@ export const about: About = {
       title: "Bachelor of Computer Science",
       timeline: "2013 - 2017",
       institution: "University of Information Technology VNUHCM • Vietnam",
-      description:
-        "Researched and developed intelligent systems used in education and administration including intelligent problem solvers, automated knowledge queries, management systems, search semantic text documents, expert systems, decision support systems, and diagnostic systems. Researched and developed application systems used in computer vision and multimedia processing systems.",
+      description: [
+        "Researched and developed intelligent systems used in education and administration including intelligent problem solvers, automated knowledge queries, management systems, search semantic text documents, expert systems, decision support systems, and diagnostic systems.",
+        "Researched and developed application systems used in computer vision and multimedia processing systems.",
+      ],
     },
   ],
   // parses html
