@@ -9,60 +9,66 @@ import Icon from "../components/Icon.astro";
 
 <Layout title={meta.about.title} description={meta.about.description}>
   <!-- Hero Section -->
-  <section class="grid gap-8 lg:grid-cols-[1fr_300px] lg:gap-12">
-    <div>
-      <h1 set:html={about.headLine} />
-      <p class="mt-2">{about.tagLine}</p>
-      <p
-        set:html={about.description.replace(
-          /\*\*(.*?)\*\*/g,
-          "<strong>$1</strong>",
-        )}
-        class="text-muted mt-4"
-      />
-      <div class="mt-8 mb-6 flex gap-3">
-        {
-          about.links.map((link) => (
-            <a
-              href={link.href}
-              target="_blank"
-              class="btn btn-soft btn-circle btn-accent light-mode-subtle"
-              title={link.icon}
-            >
-              {link.iconUrl ? (
-                <div
-                  class="social-icon"
-                  style={{
-                    width: "1.75rem",
-                    height: "1.75rem",
-                    maskImage: `url(${link.iconUrl})`,
-                    WebkitMaskImage: `url(${link.iconUrl})`,
-                    maskSize: "contain",
-                    WebkitMaskSize: "contain",
-                    maskRepeat: "no-repeat",
-                    WebkitMaskRepeat: "no-repeat",
-                    maskPosition: "center",
-                    WebkitMaskPosition: "center",
-                  }}
-                />
-              ) : (
-                <Icon name={link.icon} size="1.75rem" />
-              )}
-            </a>
-          ))
-        }
+  <section>
+    <!-- Title, Tagline, and Profile Picture Row -->
+    <div class="grid gap-6 md:grid-cols-[auto_auto] md:items-center md:gap-8">
+      <!-- Title and Tagline -->
+      <div>
+        <h1 set:html={about.headLine} />
+        <p class="mt-2">{about.tagLine}</p>
+      </div>
+
+      <!-- Profile Picture -->
+      <div class="flex justify-center">
+        <Image
+          src={about.profilePic}
+          alt="Profile Picture"
+          class="w-32 md:w-48"
+        />
       </div>
     </div>
 
-    <!-- Profile Picture - Desktop: Right side, Mobile: Above -->
-    <div
-      class="order-first lg:order-last lg:flex lg:items-start lg:justify-center"
-    >
-      <Image
-        src={about.profilePic}
-        alt="Profile Picture"
-        class="mx-auto w-40 lg:w-64"
-      />
+    <!-- Description -->
+    <p
+      set:html={about.description.replace(
+        /\*\*(.*?)\*\*/g,
+        "<strong>$1</strong>",
+      )}
+      class="text-muted mt-6"
+    />
+
+    <!-- Social Links -->
+    <div class="mt-6 flex gap-3">
+      {
+        about.links.map((link) => (
+          <a
+            href={link.href}
+            target="_blank"
+            class="btn btn-soft btn-circle btn-accent light-mode-subtle"
+            title={link.icon}
+          >
+            {link.iconUrl ? (
+              <div
+                class="social-icon"
+                style={{
+                  width: "1.75rem",
+                  height: "1.75rem",
+                  maskImage: `url(${link.iconUrl})`,
+                  WebkitMaskImage: `url(${link.iconUrl})`,
+                  maskSize: "contain",
+                  WebkitMaskSize: "contain",
+                  maskRepeat: "no-repeat",
+                  WebkitMaskRepeat: "no-repeat",
+                  maskPosition: "center",
+                  WebkitMaskPosition: "center",
+                }}
+              />
+            ) : (
+              <Icon name={link.icon} size="1.75rem" />
+            )}
+          </a>
+        ))
+      }
     </div>
   </section>
 
