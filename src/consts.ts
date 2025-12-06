@@ -99,7 +99,7 @@ export const about: About = {
         "Administered **Bitrix24 CRM** with custom workflow automation and API integrations serving **500+ users**",
         "Built executive dashboards with **Power BI** and **Superset** delivering real-time KPIs to leadership",
         "Enhanced security posture implementing **Vault** for secrets management, **Keycloak SSO** for authentication, and **Coraza WAF** for API protection",
-        "Migrated **20+ legacy applications** to HA Kubernetes clusters with complete CI/CD pipelines",
+        "Migrated standalone applications to HA Kubernetes clusters with complete CI/CD pipelines",
       ],
     },
     {
