@@ -17,8 +17,6 @@ import ApisixIcon from "./assets/icons/apisix.svg";
 import LonghornIcon from "./assets/icons/longhorn.svg";
 import MaterializeIcon from "./assets/icons/materialize.svg";
 
-export const SITE_URL: string = "http://localhost:4321";
-
 export const meta = {
   about: {
     // index page

@@ -5,11 +5,15 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
-import { SITE_URL } from "./src/consts.ts";
+
+// Dynamic site URL: production domain > Vercel preview > localhost
+const siteUrl = process.env.SITE_URL || 
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
+  "https://bantnd.vercel.app";
 
 // https://astro.build/config
 export default defineConfig({
-  site: SITE_URL,
+  site: siteUrl,
   integrations: [react(), mdx(), sitemap()],
   vite: {
     plugins: [tailwindcss()],
